@@ -29,4 +29,9 @@ class User < ApplicationRecord
     self.remember_token = User.digest(remember_key)
   end
 
+  def update_token
+    self.remember_key = User.new_token
+    update_attribute(:remember_token, User.digest(remember_key))
+  end
+
 end

@@ -1,9 +1,9 @@
 module SessionsHelper
 
-  # Logs in the given user.
-  def sign_in(user)
-    session[:user_id] = user.id
-  end
+  # # Logs in the given user.
+  # def sign_in(user)
+  #   session[:user_id] = user.id
+  # end
 
   # Remembers a user in a persistent session.
   # def remember(user)
