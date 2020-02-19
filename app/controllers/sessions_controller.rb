@@ -15,4 +15,8 @@ class SessionsController < ApplicationController
         end
     end
 
+    def delete
+        sign_out
+    end
+
 end
