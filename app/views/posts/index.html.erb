@@ -1,3 +1,14 @@
-<%= render 'partials/navbar' =%>
+<%= render 'partials/navbar' %>
 <h1>All the Posts </h1>
-<%= link_to "Create New Post",posts_new_path =%>
+
+<%= link_to "Create New Post",posts_new_path %>
+<ul>
+  <% @posts.each do |post| %>
+      <li>
+        <%= post.body %>
+        <% if signed_in? %>
+          <%= post.user.username %>
+        <% end %>
+      </li>
+  <% end %>
+</ul>
