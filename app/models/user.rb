@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :remember_key
-
+  has_many :posts
   before_create :remember
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
