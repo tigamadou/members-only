@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-
+  
   def sign_in(user)
     session[:user_id] = user.id
     user.update_token
@@ -22,5 +22,15 @@ class ApplicationController < ActionController::Base
 
   def set_current_user(user)
     @current_user = user
+  end
+
+  def signed_in?
+    !current_user.nil?
+  end
+  def required_sign_in
+    unless signed_in?
+      flash[:danger] = "You must be logged in to access this section"
+      redirect_to sign_in_path
+    end
   end
 end
