@@ -1,5 +1,16 @@
-<%= render 'partials/navbar' =%>
+
 <div class="container">
+<% if @post.errors.any? %>
+<div class = "alert alert-danger">
+<h2>The following errors prevented the post from getting created</h2>
+<ul>
+    <% @post.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+</ul>
+</div>
+<% end %>
+
 <br/>
     <%= link_to '<span class="icon"> <i class="fa fa-chevron-left"></i></span> Back'.html_safe,posts_url, method:'get',class:"btn btn-primary"%>
 

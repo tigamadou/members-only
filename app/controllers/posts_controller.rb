@@ -4,11 +4,10 @@ class PostsController < ApplicationController
     def index
         @posts = Post.all
         @current_user = @current_user if signed_in?
-            
-        
     end
 
     def new
+        @post = Post.new
     end
 
     def show
@@ -19,10 +18,9 @@ class PostsController < ApplicationController
         @post = Post.new(post_params)
         @post.user_id = current_user.id
         if @post.save
-            @post.save
             redirect_to posts_path, flash: { success: 'Post created!' }
         else
-            redirect_to new_post_path flash: { error: "#{@post.errors.full_messages_for(:title)}" }
+            render('new')
         end
     end
 
