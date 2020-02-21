@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     session[:user_id] = user.id
     user.update_token
     cookies.permanent[:remember_token] = user.remember_token
-    set_current_user user
+    @current_user = user
   end
 
   def sign_out
