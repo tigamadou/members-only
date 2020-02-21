@@ -28,7 +28,8 @@
           <%= link_to "Sign Out", sign_out_path, method: "delete",class: "btn btn-sm btn-danger" %>        
         </div>
         <% else %>
-          <%= link_to "Sign In", sign_in_path, method: "get",class: "btn btn-sm btn-success" %>        
+          <%= link_to "Sign In", sign_in_path, method: "get",class: "btn btn-sm btn-success" %>       
+          <%= link_to "Sign Up", signup_path, method: "get",class: "btn btn-sm btn-success" %>   
         <% end %>
       </div>
     </div>
