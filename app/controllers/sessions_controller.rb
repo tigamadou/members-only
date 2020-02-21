@@ -8,15 +8,18 @@ class SessionsController < ApplicationController
         if user.authenticate(params[:session][:password])
             sign_in user
             #user.remember
-            redirect_to posts_path
+            redirect_to posts_path flash[:success] = "Signed In!"
         else
             flash.now[:danger] = 'Invalid email/password combination'
             render 'new'
         end
     end
 
-    def delete
-        sign_out
+    def destroy
+      
+        session.delete(:user_id)
+        @current_user = nil
+        redirect_to posts_url flash[:success] = "Signed out!"
     end
 
 end

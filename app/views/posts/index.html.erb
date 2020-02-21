@@ -1,14 +1,42 @@
 <%= render 'partials/navbar' %>
-<h1>All the Posts </h1>
-
-<%= link_to "Create New Post",posts_new_path %>
-<ul>
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-4">All the Posts </h1>
+        <p class="lead">
+            <% if signed_in?%>
+                <a href="<%= new_post_path%>" class="btn btn-primary ">Create New Post</a> 
+            <% end %>
+        </p>
+    </div>
+</div>
+<br/>
+<div class="container">
   <% @posts.each do |post| %>
-      <li>
-        <%= post.body %>
-        <% if signed_in? %>
-          <%= post.user.username %>
-        <% end %>
-      </li>
+    <div class="card shadow border-0 mb-4">
+        <div class="card-body">
+            <h3 class="card-title">
+                <%= link_to "#{post.title}", post %>
+            </h3>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+
+            </div>
+            <% if signed_in?%>
+            <div class="badge badge-light" title="Author"><span class="icon"><i class="fa fa-user"></i></span> <%= post.user.username %></div>
+            <% end %>
+            <div class="badge badge-secondary"><span class="icon"><i class="fa fa-clock-o"></i></span> <%= post.created_at %></div>
+            
+        </div>
+    </div>
+        
+        
+          
+        
+    
   <% end %>
-</ul>
+</div>
+<br/>
+<br/>
+
+

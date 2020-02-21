@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get 'sign_in', to: 'sessions#new'
-  post 'sign_in', to: 'sessions#create'
-  delete 'sign_out', to: 'sessions#destroy'
+  root 'posts#index'
+  get 'sign_in', action:'new', controller: 'sessions'
+  post 'sign_in', action:'create', controller:'sessions'
+  delete 'sign_out', action: 'destroy', controller: 'sessions'
 
   # Post Routes
-  get 'posts', to: 'posts#index'
-  get 'posts/new', to: 'posts#new'
+
+  resources :posts
+ 
+  
   post 'posts', to: 'posts#create'
 end

@@ -27,10 +27,13 @@ class ApplicationController < ActionController::Base
   def signed_in?
     !current_user.nil?
   end
+
   def required_sign_in
     unless signed_in?
       flash[:danger] = "You must be logged in to access this section"
       redirect_to sign_in_path
     end
   end
+
+  helper_method :signed_in?
 end

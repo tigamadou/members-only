@@ -1,6 +1,6 @@
+<div class="container">
 
-    
-
+    <div style="max-width:500px;margin:auto;" class="d-flex justify-content-center align-items-center vh-100">
     <%= form_for(:session, url: sign_in_path) do |f| %>  
         
         <div class="form-group">
@@ -17,3 +17,5 @@
             <%= f.submit "Sign In", class: 'btn btn-primary btn-block' %>
         </div>
     <% end %>
+    </div>
+</div>
