@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def new
     @user = User.new
   end
@@ -8,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to Members Only!"
+      flash[:success] = 'Welcome to Members Only!'
       redirect_to posts_path
     else
       render 'new'
@@ -17,8 +16,7 @@ class UsersController < ApplicationController
 
   private
 
-    def user_params
-      params.require(:user).permit(:username, :email, :password, :password_confirmation)
-    end
-
+  def user_params
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+  end
 end
