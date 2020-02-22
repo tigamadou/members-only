@@ -5,15 +5,13 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(remember_token: cookies.permanent[:remember_token]) if session[:user_id]
   end
 
-  def current_user=(user)
-    @current_user = user
-  end
+  attr_writer :current_user
 
   def sign_in(user)
     session[:user_id] = user.id
     user.update_token
     cookies.permanent[:remember_token] = user.remember_token
-    current_user=(user)
+    self.current_user = user
   end
 
   def sign_out
