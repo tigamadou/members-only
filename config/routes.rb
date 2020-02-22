@@ -6,10 +6,9 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   post 'signup', to: 'users#create'
   resources :user
-  # Post Routes
-
-  resources :posts
  
-  
   post 'posts', to: 'posts#create'
+  get 'posts/new', to: 'posts#new'
+  get 'posts', to: 'posts#index'
+
 end
