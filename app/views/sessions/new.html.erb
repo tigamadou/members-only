@@ -1,0 +1,24 @@
+<div class="container">
+<br/>
+    <%= link_to '<span class="icon"> <i class="fa fa-chevron-left"></i></span> Back'.html_safe,posts_url, method:'get',class:"btn btn-primary"%>
+
+    <h1>Sign In</h1>
+    <div>
+    <%= form_for(:session, url: sign_in_path) do |f| %>  
+        
+        <div class="form-group">
+            <%= f.label :email %>:
+            <%= f.email_field :email, placeholder: 'johndoe@domain.com', class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :password %>:
+            <%= f.password_field :password, class: 'form-control',required:true %><br />
+        </div>
+
+        <div class="form-group">
+            <%= f.submit "Sign In", class: 'btn btn-primary btn-block' %>
+        </div>
+    <% end %>
+    </div>
+</div>
